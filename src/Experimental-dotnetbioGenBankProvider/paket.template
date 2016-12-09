@@ -1,0 +1,25 @@
+type project
+title
+    Experimental-dotnetbioGenBankProvider
+owners
+    Jessica Davis
+authors 
+    Jessica Davis
+projectUrl
+    https://github.com/jessicagrace17/Experimental-dotnetbioGenBankProvider/jessicagrace17/Experimental-dotnetbioGenBankProvider
+iconUrl
+    https://raw.githubusercontent.com/jessicagrace17/Experimental-dotnetbioGenBankProvider/master/docs/files/img/logo.png
+licenseUrl
+    https://github.com/jessicagrace17/Experimental-dotnetbioGenBankProvider/jessicagrace17/Experimental-dotnetbioGenBankProvider/blob/master/LICENSE.txt
+requireLicenseAcceptance
+    false
+copyright
+    Copyright 2015
+tags
+    type provider, dotnetbio, GenBank, bioinformaticsharp
+summary
+    A type provider for GenBank data with the use of .NET Bio types
+description
+    This project is an experimental type provider for GenBank data which makes use of the existing .NET Bio library.
+
+
