@@ -10,8 +10,7 @@ the .NET Bio Bioinformatics library, and the eventual development of a Type Prov
 * [Using the .NET Bio GenBank Type Provider](#using)
 * [Building and Contributing](#build)
 * [Known Issues and Future Directions](#issues) 
-* [Tutorials Using .NET Bio in FSharp]()
-* [.NET Bio GenBank Provider Tutorials]()
+* [Tutorials & Wiki](https://github.com/jessicagrace17/Experimental-dotnetbioGenBankProvider/wiki)
 
 <a name="overview">Overview and Motivation</a>
 ------
