@@ -1,4 +1,4 @@
-﻿namespace Experimental
+﻿namespace Bio.FSharp.GenBankTypeProvider
 
 open System
 open System.IO

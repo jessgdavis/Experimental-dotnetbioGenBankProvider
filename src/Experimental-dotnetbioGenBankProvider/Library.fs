@@ -1,4 +1,4 @@
-﻿namespace Experimental
+﻿namespace Bio.FSharp.GenBankTypeProvider
 
 open System
 open System.Reflection
@@ -12,17 +12,17 @@ open Bio.IO
 open Bio.Core
 open Bio.IO.GenBank
 
-open Experimental.GenBankDataHelperMethods
+open Bio.FSharp.GenBankTypeProvider.GenBankDataHelperMethods
 
 [<TypeProvider>]
 type public dotnetbioGenBankTypeProvider(config: TypeProviderConfig) as this = 
     inherit TypeProviderForNamespaces()
 
-    let ns = "Experimental"
+    let ns = "Bio.FSharp.Experimental"
     let asm = Assembly.GetExecutingAssembly()
 
     // Type to export from the type provider
-    let dotnetbioGenBankTY = ProvidedTypeDefinition(asm, ns, "dotnetbioGenBankProvider", Some(typeof<obj>), HideObjectMethods=true)
+    let dotnetbioGenBankTY = ProvidedTypeDefinition(asm, ns, "GenBankProvider", Some(typeof<obj>), HideObjectMethods=true)
 
     // static parameter -> filename of genbank file
     let filename = ProvidedStaticParameter("filename", typeof<string>)
