@@ -1,4 +1,4 @@
-﻿namespace Experimental.dotnetbioGenBankTypeProvider
+﻿namespace Experimental
 
 open System
 open System.IO

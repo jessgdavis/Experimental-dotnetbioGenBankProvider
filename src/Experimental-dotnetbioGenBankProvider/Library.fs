@@ -1,4 +1,4 @@
-﻿namespace Experimental.dotnetbioGenBankTypeProvider.Provider
+﻿namespace Experimental
 
 open System
 open System.Reflection
@@ -12,13 +12,13 @@ open Bio.IO
 open Bio.Core
 open Bio.IO.GenBank
 
-open Experimental.dotnetbioGenBankTypeProvider.GenBankDataHelperMethods
+open Experimental.GenBankDataHelperMethods
 
 [<TypeProvider>]
 type public dotnetbioGenBankTypeProvider(config: TypeProviderConfig) as this = 
     inherit TypeProviderForNamespaces()
 
-    let ns = "Experimental.dotnetbioGenBankTypeProvider.Provider"
+    let ns = "Experimental"
     let asm = Assembly.GetExecutingAssembly()
 
     // Type to export from the type provider
