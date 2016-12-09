@@ -1,4 +1,5 @@
 FSharp.Core
+NETBioCore.PCL
 
 File:ProvidedTypes.fsi
 File:ProvidedTypes.fs
