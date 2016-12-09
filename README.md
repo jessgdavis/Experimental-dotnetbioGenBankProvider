@@ -8,7 +8,6 @@ the .NET Bio Bioinformatics library, and the eventual development of a Type Prov
 
 * [Overview and Motivation](#overview)
 * [Using the .NET Bio GenBank Type Provider](#using)
-* [Building and Contributing](#build)
 * [Known Issues and Future Directions](#issues) 
 * [Tutorials & Wiki](https://github.com/jessicagrace17/Experimental-dotnetbioGenBankProvider/wiki)
 
@@ -78,11 +77,36 @@ However, with the type provider, these features are able to be browsed by their 
 
 ![Image showing intellisene when accessing a coding sequence](https://github.com/jessicagrace17/Experimental-dotnetbioGenBankProvider/blob/master/docs/files/img/cds-intellisense.png)
 
-<a name="using">Using the .NET Bio GenBank Provider in your application</a>
+<a name="using">Using the .NET Bio GenBank Provider</a>
 ------
+At this stage, the type provider has not been released as there is some further work to be done. However, it is still possible to use the type provider by following these steps:
 
-<a name="build">Building and Contributing</a>
-------
+1. Download or clone this repository
+2. Change into the directory Experimental-dotnetbioGenBankProvider
+3. Build the project
+   * on Windows:   `build.cmd`
+   * with Mono:    `build.sh`
+4. There should now be a /bin/Experimental-dotnetbioGenBankProvider directory under the top Experimental-dotnetbioGenBankProvider directory. Copy the full path to this directory.
+5. Create a new FSharp script that looks like this:
+   
+   ```fsharp
+   // This adds the folder to the path for this interactive session
+   #I "full\path\to\Experimental-dotnetbioGenBankProvider"
+   
+   // Now we reference the Bio.Core dll and the Experimental-dotnetbioGenBankProvider dll
+   #r "bin\Experimental-dotnetbioGenBankProvider\Bio.Core.dll"
+   #r "bin\Experimental-dotnetbioGenBankProvider\Experimental-dotnetbioGenBankProvider.dll"
+
+   // We are then free to use the type provider - you initalize it for a given GenBank file like so:
+   type mygenome = Bio.FSharp.Experimental.GenBankProvider<"path\to\mygenomefile.gbk">
+
+   // Then we could browse through the coding sequences in this genome...
+   mygenome.CDSS.
+   
+   // We can look at another GenBank file
+   type myothergenome = Bio.FSharp.Experimental.GenBankProvider<"path\to\myothergenomefile.gbk">
+
+   ```
 
 <a name="issues">Known Issues and Future Directions</a>
 ------
