@@ -8,7 +8,6 @@ the .NET Bio Bioinformatics library, and the eventual development of a Type Prov
 
 * [Overview and Motivation](#overview)
 * [Using the .NET Bio GenBank Type Provider](#using)
-* [Building and Contributing](#build)
 * [Known Issues and Future Directions](#issues) 
 * [Tutorials & Wiki](https://github.com/jessicagrace17/Experimental-dotnetbioGenBankProvider/wiki)
 
@@ -108,10 +107,6 @@ At this stage, the type provider has not been released as there is some further 
    type myothergenome = Bio.FSharp.Experimental.GenBankProvider<"path\to\myothergenomefile.gbk">
 
    ```
-
-
-<a name="build">Building and Contributing</a>
-------
 
 <a name="issues">Known Issues and Future Directions</a>
 ------
