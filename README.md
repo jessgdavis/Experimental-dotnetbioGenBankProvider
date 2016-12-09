@@ -58,8 +58,8 @@ In order to get to the accession number with .NET Bio, we need to complete the f
 #### Type Provider
 With the type provider, the following two lines achieve the same effect:
 ``` fsharp
-    type ``NC_012686-Chlamydia trachomatis`` = Provider.dotnetbioGenBankProvider<"mysequencefile.gbk">
-    ``NC_012686-Chlamydia trachomatis``.Accession
+    type mygenome = Bio.FSharp.Experimental.GenBankProvider<"mysequencefile.gbk">
+    mygenome.Accession
 ```
 
 ### Intellisense
