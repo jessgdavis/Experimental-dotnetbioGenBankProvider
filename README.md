@@ -4,7 +4,11 @@ This project is the work of an undergraduate computer science student at Queensl
 under the supervision of Associate Professor James Hogan. The aim of the project was an exploration of using FSharp with
 the .NET Bio Bioinformatics library, and the eventual development of a Type Provider for GenBank data. 
 
-Overview and Motivation
+## Contents
+| [Overview and Motivation](#overview) | [Using the .NET Bio GenBank Type Provider](#using) | [Building and Contributing](#build) | [Known Issues and Future Directions](#issues) |
+| --- | --- | --- | --- |
+
+<a name="overview">Overview and Motivation</a>
 ------
 
 The [.NET Bio GitHub page](https://github.com/dotnetbio/bio) (2016) states that .NET Bio is an open source library of common Bioinformatics functions, intended to simplify the creation of life science applications.
@@ -68,11 +72,11 @@ However, with the type provider, these features are able to be browsed by their 
 
 ![Image showing intellisene when accessing a coding sequence](https://github.com/jessicagrace17/Experimental-dotnetbioGenBankProvider/blob/master/docs/files/img/cds-intellisense.png)
 
-Dependencies 
+<a name="using">Using the .NET Bio GenBank Provider in your application</a>
 ------
 
-How To Use
+<a name="build">Building and Contributing</a>
 ------
 
-Known Issues and Future Directions
+<a name="issues">Known Issues and Future Directions</a>
 ------
