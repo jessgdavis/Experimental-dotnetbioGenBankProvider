@@ -55,7 +55,7 @@ With the type provider, the following two lines achieve the same effect:
 ### Intellisense
 The added advantage of using a type provider is the ability to create highly customized xml documentation to be displayed with intellisense. This allows rich contextual information such as that seen in the figure below, where we are selecting the 'Locus' property of the provided type.
 
-![Image showing intellisense when accessing locus info](https://github.com/jessicagrace17/dotnetbioGenBankProvider/blob/master/Docs/images/locus-intellisense.png)
+![Image showing intellisense when accessing locus info](https://github.com/jessicagrace17/Experimental-dotnetbioGenBankProvider/blob/master/docs/files/img/locus-intellisense.png)
 
 The type provider also pulls out sequence features and exposes them in manner more conducive to quick scripting and browsing. We will again demonstrate this with an example.
 
@@ -66,7 +66,7 @@ In .NET Bio, sequence features are stored as an array of objects; in order to ac
 #### Type Provider
 However, with the type provider, these features are able to be browsed by their locus tag using intellisense to give a quick overview of that feature, as seen below. 
 
-![Image showing intellisene when accessing a coding sequence](https://github.com/jessicagrace17/dotnetbioGenBankProvider/blob/master/Docs/images/cds-intellisense.png)
+![Image showing intellisene when accessing a coding sequence](https://github.com/jessicagrace17/Experimental-dotnetbioGenBankProvider/blob/master/docs/files/img/cds-intellisense.png)
 
 Dependencies 
 ------
