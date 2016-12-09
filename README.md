@@ -5,8 +5,13 @@ under the supervision of Associate Professor James Hogan. The aim of the project
 the .NET Bio Bioinformatics library, and the eventual development of a Type Provider for GenBank data. 
 
 ## Contents
-| [Overview and Motivation](#overview) | [Using the .NET Bio GenBank Type Provider](#using) | [Building and Contributing](#build) | [Known Issues and Future Directions](#issues) |
-| --- | --- | --- | --- |
+
+* [Overview and Motivation](#overview)
+* [Using the .NET Bio GenBank Type Provider](#using)
+* [Building and Contributing](#build)
+* [Known Issues and Future Directions](#issues) 
+* [Tutorials Using .NET Bio in FSharp]()
+* [.NET Bio GenBank Provider Tutorials]()
 
 <a name="overview">Overview and Motivation</a>
 ------
@@ -23,7 +28,9 @@ A simple demonstration of the difference between working with the type provider 
 In order to get to the accession number with .NET Bio, we need to complete the following steps:
 
 1. Parse a sequence from a file
-2. Retrieve the GenBank metadata. It should be noted here that .NET Bio ISequences have a Metadata object associated with them, which is a generic dictionary. In the case of a GenBank data source, one of the entries in this dictionary has the key "GenBank"; this is the object we wish to retrieve.
+2. Retrieve the GenBank metadata. 
+
+   It should be noted here that .NET Bio ISequences have a Metadata object associated with them, which is a generic dictionary. In the case of a GenBank data source, one of the entries in this dictionary has the key "GenBank"; this is the object we wish to retrieve.
 3. Access the accession number
 
 ``` fsharp
