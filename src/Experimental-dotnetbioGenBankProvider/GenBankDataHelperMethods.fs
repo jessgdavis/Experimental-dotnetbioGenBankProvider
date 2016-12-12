@@ -11,14 +11,14 @@ open Bio.IO.GenBank
 module GenBankDataHelperMethods = 
 
     /// Method to get the genome sequence contained in a file specified by the fileName parameter
-    let getGenomeSeq fileName = 
+    let GetSeqFromFile fileName = 
         let stream = File.OpenRead fileName 
-        let parser = Bio.IO.SequenceParsers.FindParserByFileName fileName
+        let parser = Bio.IO.SequenceParsers.GenBank
         parser.ParseOne stream
 
     /// Method to get the metadata associated with the sequence specified by the filename parameter
-    let getMetadata filename = 
-        let genomeSeq = getGenomeSeq filename
+    let GetGenBankMetadataFromFile filename = 
+        let genomeSeq = GetSeqFromFile filename
         genomeSeq.Metadata 
         |> (fun md -> 
             md.TryGetValue("GenBank") 
