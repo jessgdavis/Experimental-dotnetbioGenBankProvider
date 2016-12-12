@@ -1,4 +1,5 @@
 FSharp.Core
+NETBioCore.PCL
 group Test
 NUnit
 NUnit.Runners
