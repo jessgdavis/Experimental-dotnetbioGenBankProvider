@@ -1,8 +1,13 @@
-#I "Z:\Users\Jess\git\Experimental-dotnetbioGenBankProvider"
+#I "Z:\Users\Jess\git\Experimental-dotnetbioGenBankProvider\src\Experimental-dotnetbioGenBankProvider"
 
-#r "bin\Experimental-dotnetbioGenBankProvider\Bio.Core.dll"
-#r "bin\Experimental-dotnetbioGenBankProvider\Experimental-dotnetbioGenBankProvider.dll"
+#r "bin\Debug\Bio.Core.dll"
+#r "bin\Debug\Experimental-dotnetbioGenBankProvider.dll"
 
-type ``NC_012686-Chlamydia trachomatis`` = Bio.FSharp.Experimental.GenBankProvider<"Z:\Users\Jess\git\dotnetbio-fsharp-project\Data\NC_012686-Chlamydia trachomatis.gbk">
+let ref = @"Z:\Users\Jess\git\Experimental-dotnetbioGenBankProvider\docs\files\NC_012686-Chlamydia trachomatis.gbk"
+type ``NC_012686-Chlamydia trachomatis`` = Bio.FSharp.Experimental.GenBankProvider< @"Z:\Users\Jess\git\Experimental-dotnetbioGenBankProvider\docs\files\NC_012686-Chlamydia trachomatis.gbk" >
 
-``NC_012686-Chlamydia trachomatis``.Accession
+``NC_012686-Chlamydia trachomatis``.Comments
+
+
+
+``NC_012686-Chlamydia trachomatis``.``.NET Bio Objects``.ISequence
