@@ -36,14 +36,14 @@ type public dotnetbioGenBankTypeProvider(config: TypeProviderConfig) as this =
             let resolvedFilename = Path.Combine(config.ResolutionFolder, filename)
             
             // Exception is thrown if the file is unable to be parsed
-            let sequence = 
+            let sequencestr = 
                 try 
-                     GetSeqFromFile resolvedFilename
+                     System.IO.File.ReadAllText(resolvedFilename)
                 with 
                     _ -> failwith "Unable to parse file. Check the file path and format, and try again."
 
             // access to commonly used sequence properties
-            let md = resolvedFilename |> GetGenBankMetadataFromFile 
+            let md = sequencestr |> GetGenBankMetadataFromString 
             let allFeatures = md.Features.All
 
             // define the provided type
@@ -57,14 +57,14 @@ type public dotnetbioGenBankTypeProvider(config: TypeProviderConfig) as this =
 
             // Static Property: original iseq
             let iseq = ProvidedProperty("ISequence", typeof<ISequence>, IsStatic = true, GetterCode = 
-                (fun [] -> <@@ resolvedFilename |> GetSeqFromFile @@>)
+                (fun [] -> <@@ sequencestr |> GetSeqFromString @@>)
             )
             iseq.AddXmlDoc "A .Net Bio ISequence object representation of the input sequence"
             dotnetbioty.AddMember iseq
 
             // Static Property: genbank metadata
             let gbmd = ProvidedProperty("GenBankMetaData", typeof<GenBankMetadata>, IsStatic = true, GetterCode = 
-                (fun [] -> <@@ resolvedFilename |> GetGenBankMetadataFromFile @@>)
+                (fun [] -> <@@ sequencestr |> GetGenBankMetadataFromString @@>)
             )
             gbmd.AddXmlDoc "The .NET Bio GenBankMetadata object for the input sequence"
             dotnetbioty.AddMember gbmd
@@ -77,7 +77,7 @@ type public dotnetbioGenBankTypeProvider(config: TypeProviderConfig) as this =
             let accession = ProvidedProperty("Accession", typeof<GenBankAccession>, IsStatic = true, GetterCode = 
                 (fun [] -> 
                     <@@ 
-                        let md = GetGenBankMetadataFromFile resolvedFilename 
+                        let md = GetGenBankMetadataFromString sequencestr 
                         md.Accession
                     @@>)
             )
@@ -126,7 +126,7 @@ type public dotnetbioGenBankTypeProvider(config: TypeProviderConfig) as this =
             let locus = ProvidedProperty("Locus", typeof<GenBankLocusInfo>, IsStatic=true, GetterCode=
                 (fun [] -> 
                     <@@
-                        let md = resolvedFilename |> GetGenBankMetadataFromFile
+                        let md = GetGenBankMetadataFromString sequencestr 
                         md.Locus
                     @@>
                 )
@@ -147,7 +147,7 @@ type public dotnetbioGenBankTypeProvider(config: TypeProviderConfig) as this =
             let origin = ProvidedProperty("Origin", typeof<string>, IsStatic=true, GetterCode=
                 (fun [] -> 
                     <@@
-                        let md = resolvedFilename |> GetGenBankMetadataFromFile
+                        let md = GetGenBankMetadataFromString sequencestr 
                         md.Origin
                     @@>
                 )
@@ -163,7 +163,7 @@ type public dotnetbioGenBankTypeProvider(config: TypeProviderConfig) as this =
             let primary = ProvidedProperty("Primary", typeof<string>, IsStatic=true, GetterCode=
                 (fun [] -> 
                     <@@
-                        let md = resolvedFilename |> GetGenBankMetadataFromFile
+                        let md = GetGenBankMetadataFromString sequencestr 
                         md.Primary
                     @@>
                 )
@@ -180,7 +180,7 @@ type public dotnetbioGenBankTypeProvider(config: TypeProviderConfig) as this =
             let references = ProvidedProperty("References", typeof<Collections.Generic.IList<CitationReference>>, IsStatic=true, GetterCode=
                 (fun [] -> 
                     <@@
-                        let md = resolvedFilename |> GetGenBankMetadataFromFile
+                        let md = GetGenBankMetadataFromString sequencestr 
                         md.References 
                     @@>
                 )
@@ -204,7 +204,7 @@ type public dotnetbioGenBankTypeProvider(config: TypeProviderConfig) as this =
             let segment = ProvidedProperty("Segment", typeof<SequenceSegment>, IsStatic=true, GetterCode=
                 (fun [] -> 
                     <@@ 
-                        let md = resolvedFilename |> GetGenBankMetadataFromFile
+                        let md = GetGenBankMetadataFromString sequencestr 
                         md.Segment
                     @@>
                 )
@@ -220,7 +220,7 @@ type public dotnetbioGenBankTypeProvider(config: TypeProviderConfig) as this =
             let source = ProvidedProperty("Source", typeof<SequenceSource>, IsStatic=true, GetterCode=
                 (fun [] -> 
                     <@@ 
-                        let md = resolvedFilename |> GetGenBankMetadataFromFile
+                        let md = GetGenBankMetadataFromString sequencestr 
                         md.Source
                     @@>
                 )
@@ -236,7 +236,7 @@ type public dotnetbioGenBankTypeProvider(config: TypeProviderConfig) as this =
             let version = ProvidedProperty("Version", typeof<GenBankVersion>, IsStatic=true, GetterCode=
                 (fun [] -> 
                     <@@
-                        let md = resolvedFilename |> GetGenBankMetadataFromFile
+                        let md = GetGenBankMetadataFromString sequencestr 
                         md.Version
                     @@>
                 )
@@ -270,7 +270,7 @@ type public dotnetbioGenBankTypeProvider(config: TypeProviderConfig) as this =
                     let featureProp = ProvidedProperty(n, typeof<FeatureItem>, IsStatic=true, GetterCode = 
                         (fun [] ->
                             <@@ 
-                                let m = resolvedFilename |> GetGenBankMetadataFromFile 
+                                let m = GetGenBankMetadataFromString sequencestr 
                                 let thisFt = m.Features.All |> Seq.filter (fun f -> f.Key = name) |> Seq.toList
                                 thisFt.[i]
                             @@>

@@ -16,9 +16,18 @@ module GenBankDataHelperMethods =
         let parser = Bio.IO.SequenceParsers.GenBank
         parser.ParseOne stream
 
-    /// Method to get the metadata associated with the sequence specified by the filename parameter
-    let GetGenBankMetadataFromFile filename = 
-        let genomeSeq = GetSeqFromFile filename
+    // Method to get an ISequence object representing the data contained in the sequencestr parameter
+    let GetSeqFromString (sequenceStr:string) = 
+        use stream = new MemoryStream()
+        use writer = new StreamWriter(stream)
+        writer.Write(sequenceStr)
+        stream.Position <- int64(0)
+        let parser = Bio.IO.SequenceParsers.GenBank
+        parser.ParseOne stream
+
+    /// Method to get the metadata associated with the sequence specified by the sequence string parameter
+    let GetGenBankMetadataFromString (sequenceStr:string) = 
+        let genomeSeq = GetSeqFromString sequenceStr
         genomeSeq.Metadata 
         |> (fun md -> 
             md.TryGetValue("GenBank") 
@@ -29,6 +38,7 @@ module GenBankDataHelperMethods =
                     new Bio.IO.GenBank.GenBankMetadata() 
             )
         )
+
 
     /// Method to concatenate a sequence of strings into a comma separated string
     let ConvertToCommaSeparatedString (value:seq<string>) =
