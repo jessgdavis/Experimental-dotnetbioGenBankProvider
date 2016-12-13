@@ -1,6 +1,6 @@
 # .NET Bio GenBank Type Provider
 
-This project is the work of an undergraduate computer science student at Queensland University of Technology, 
+This project is the work of computer science students at Queensland University of Technology, 
 under the supervision of Associate Professor James Hogan. The aim of the project was an exploration of using FSharp with
 the .NET Bio Bioinformatics library, and the eventual development of a Type Provider for GenBank data. 
 
