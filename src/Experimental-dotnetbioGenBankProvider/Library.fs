@@ -32,13 +32,12 @@ type public dotnetbioGenBankTypeProvider(config: TypeProviderConfig) as this =
         [filename],
         (fun typeName [| :? string as filename |] -> 
 
-            // some static variables used internally; only resolvedFilename can be passed to quotations
-            let resolvedFilename = Path.Combine(config.ResolutionFolder, filename)
-            
             // Exception is thrown if the file is unable to be parsed
             let sequencestr = 
                 try 
-                     System.IO.File.ReadAllText(resolvedFilename)
+                     match filename.StartsWith("ftp://") with
+                     | true -> GetSeqFromURL filename
+                     | false -> System.IO.File.ReadAllText(Path.Combine(config.ResolutionFolder, filename))
                 with 
                     _ -> failwith "Unable to parse file. Check the file path and format, and try again."
 

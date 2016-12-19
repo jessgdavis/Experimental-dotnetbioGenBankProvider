@@ -2,6 +2,8 @@
 
 open System
 open System.IO
+open System.Net
+open System.IO.Compression
 
 open Bio
 open Bio.Core
@@ -38,6 +40,17 @@ module GenBankDataHelperMethods =
                     new Bio.IO.GenBank.GenBankMetadata() 
             )
         )
+
+    /// Method to get a sequence from a specified url 
+    let GetSeqFromURL (url:string) = 
+        let webClient = new WebClient()
+        try 
+            use srcStream = url |> webClient.OpenRead
+            use uncompressedStream = new StreamReader(new GZipStream(srcStream, CompressionMode.Decompress))
+            uncompressedStream.ReadToEnd()
+        with
+            |_ -> failwith "Unable to read data at specified URL"
+
 
 
     /// Method to concatenate a sequence of strings into a comma separated string
