@@ -44,8 +44,9 @@ module GenBankDataHelperMethods =
     /// Method to get a sequence from a specified url 
     let GetSeqFromURL (url:string) = 
         let webClient = new WebClient()
+        let fullURL = url + (url.Split('/') |> Seq.last |> (fun x -> "/" + x + "_genomic.gbff.gz")) 
         try 
-            use srcStream = url |> webClient.OpenRead
+            use srcStream = fullURL |> webClient.OpenRead
             use uncompressedStream = new StreamReader(new GZipStream(srcStream, CompressionMode.Decompress))
             uncompressedStream.ReadToEnd()
         with
