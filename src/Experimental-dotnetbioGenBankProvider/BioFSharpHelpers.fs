@@ -4,6 +4,8 @@ open System
 open System.IO
 open System.Net
 open System.IO.Compression
+open Bio.IO.GenBank
+open Bio
 
 module Helpers = 
     /// Method to download a GenBank file from NCBI's FTP server. 
@@ -23,4 +25,9 @@ module Helpers =
             Console.WriteLine("{0} saved to {1}", sequenceFolderName, targetDirectory + "/" + sequenceFolderName)
         with
             |_ -> failwith "Unable to download and save file"
+
+
+    let GetGeneSequence (gene:Gene) (genome:ISequence) = 
+        genome.GetSubSequence(int64(gene.Location.LocationStart), int64(gene.Location.LocationEnd))
+
 
